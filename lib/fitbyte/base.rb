@@ -21,4 +21,6 @@ module Fitbyte
 
   define_setting :snake_case,     false
   define_setting :symbolize_keys, false
+
+  define_setting :grant_type,     'auth_code'
 end
