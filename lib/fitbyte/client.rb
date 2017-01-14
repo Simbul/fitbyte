@@ -25,7 +25,7 @@ module Fitbyte
       end
 
       %w(client_id client_secret redirect_uri site_url authorize_url token_url
-      unit_system locale scope api_version snake_case symbolize_keys grant_type).each do |attr|
+      unit_system locale scope api_version snake_case symbolize_keys grant_type expires_in).each do |attr|
         instance_variable_set("@#{attr}", (opts[attr.to_sym] || Fitbyte.send(attr)))
       end
 
@@ -45,9 +45,9 @@ module Fitbyte
 
     def auth_page_link
       if grant_type == 'auth_code'
-        @client.auth_code.authorize_url(redirect_uri: @redirect_uri, scope: @scope)
+        @client.auth_code.authorize_url(redirect_uri: @redirect_uri, scope: @scope, expires_in: @expires_in)
       elsif grant_type == 'implicit'
-        @client.implicit.authorize_url(redirect_uri: @redirect_uri, scope: @scope)
+        @client.implicit.authorize_url(redirect_uri: @redirect_uri, scope: @scope, expires_in: @expires_in)
       end
     end
 

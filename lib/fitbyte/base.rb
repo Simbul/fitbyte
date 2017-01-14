@@ -23,4 +23,5 @@ module Fitbyte
   define_setting :symbolize_keys, false
 
   define_setting :grant_type,     'auth_code'
+  define_setting :expires_in,     3600
 end
